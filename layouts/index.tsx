@@ -1,4 +1,5 @@
-import styles, {globalStyles} from "./styles"
+import AppMenu from "../components/AppMenu/AppMenu";
+import styles, { globalStyles } from "./styles"
 
 type Props = {
     title?: string,
@@ -9,14 +10,15 @@ export default function Layout({ children }: Props) {
     return (
         <>
             <div>
+                <AppMenu />
                 <main className="">
                     {children}
                 </main>
             </div>
 
-            <style jsx global>{globalStyles}</style>
+            {<style jsx global>{globalStyles}</style>}
 
-            <style jsx>{styles}</style>
+            {/*<style jsx>{styles}</style>*/}
         </>
     )
 }
