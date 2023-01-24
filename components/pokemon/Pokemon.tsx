@@ -3,13 +3,17 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import styles from "./styles"
 
-const Pokemon = ({ data }) => {
+const Pokemon = (props: PokemonData) => {
+    const {data} = props;
     const { name, url } = data;
-    const [pokemonData, setPokemonData] = useState({});
+    const [pokemonData, setPokemonData] = useState<PokemonDetail>();
     useEffect(() => {
-        fetch(url).then(res => res.json()).then(data => setPokemonData(data))
+        fetch(url).then(res => res.json()).then((data:PokemonDetail) => setPokemonData(data))
     }, [url])
 
+    if (!pokemonData) {
+        return;
+    }
     
     const imageSrc = pokemonData.sprites?.back_default;
     const href = `/pokemon/${pokemonData.id}`;

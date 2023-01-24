@@ -1,9 +1,10 @@
 import styles from "./styles"
-import { DataGrid, GridColDef, GridValueGetterParams } from '@mui/x-data-grid';
+import { DataGrid, GridColDef, GridRowParams, GridValueGetterParams } from '@mui/x-data-grid';
 import { useEffect, useState } from "react";
 import { getCrypto } from "../../action/crypto";
 import { PAGE_SIZE } from "../../constants";
 import { useRouter } from 'next/router'
+import { CryptoApiResponse } from "../../types/action";
 
 
 const columns: GridColDef[] = [
@@ -16,7 +17,7 @@ const columns: GridColDef[] = [
 
 const CryptoList = () => {
 
-    const [cryptoList, setCryptoList] = useState([]);
+    const [cryptoList, setCryptoList] = useState<any[]>([]);
     const [page, setPage] = useState(0);
     const [totalResults, setTotalResults] = useState(0);
     const [loading, setLoading] = useState(false);
@@ -24,20 +25,20 @@ const CryptoList = () => {
 
     useEffect(() => {
         getCrypto(page, PAGE_SIZE)
-            .then(data => {
+            .then((data: CryptoApiResponse) => {
                 setCryptoList(data.results);
                 setTotalResults(data.total)
-                setLoading(false);                
-            });            
+                setLoading(false);
+            });
     }, [page]);
 
-    const pageChange = (newPage) => {
+    const pageChange = (newPage: number) => {
         setLoading(true);
         setPage(newPage);
     }
 
-    const rowClick = (rowData) => {
-        const {id} = rowData;
+    const rowClick = (rowData: GridRowParams) => {
+        const { id } = rowData;
         router.push(`/crypto/${id}`);
 
     }
@@ -46,14 +47,14 @@ const CryptoList = () => {
             rows={cryptoList}
             columns={columns}
             pageSize={PAGE_SIZE}
-            rowsPerPageOptions={[PAGE_SIZE]}            
+            rowsPerPageOptions={[PAGE_SIZE]}
             getRowId={(row) => row.symbol}
             rowCount={totalResults}
             onPageChange={pageChange}
             onRowClick={rowClick}
             paginationMode="server"
             loading={loading}
-            isRowSelectable={() => false}                        
+            isRowSelectable={() => false}
         />
         <style jsx>{styles}</style>
     </div>)

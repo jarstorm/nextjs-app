@@ -3,17 +3,15 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import styles from "./styles"
 
-const Crypto = ({ data }) => {
-    const { name, url } = data;
-    console.log(data)
-    
+const Crypto = (props: CryptoData) => {    
+    const { data } = props
     const href = `/crypto/${data.symbol}`;
     return (
         <div  className="pokemonCard">
             <Card sx={{ minWidth: 275 }}>
                 <CardContent>
                     <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
-                        {name}
+                        {data.symbol}
                     </Typography>
                     <Typography variant="h5" component="div">
                         {data.symbol}

@@ -8,8 +8,7 @@ interface MenuItemType {
 }
 const menuItems: MenuItemType[] = [{ href: "/", text: "Home" },
 { href: "/pokemon", text: "Pokemon list" },
-{ href: "/crypto", text: "Crypto" },
-{ href: "/crypto", text: 1}];
+{ href: "/crypto", text: "Crypto" }];
 
 const AppMenu = () => {
   return (
