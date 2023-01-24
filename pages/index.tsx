@@ -12,7 +12,7 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />        
       </Head>
       <Layout>      
-        <Link href='/test'>Test</Link>      
+        <p>This is the home page of the app</p>
       </Layout>
     </>
   )

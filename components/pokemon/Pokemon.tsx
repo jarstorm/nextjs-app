@@ -10,7 +10,7 @@ const Pokemon = ({ data }) => {
         fetch(url).then(res => res.json()).then(data => setPokemonData(data))
     }, [url])
 
-    console.log(pokemonData)
+    
     const imageSrc = pokemonData.sprites?.back_default;
     const href = `/pokemon/${pokemonData.id}`;
     return (

@@ -4,12 +4,9 @@ import Layout from "../../layouts";
 import CryptoList from "../../components/crypto/CryptoList";
 
 const Crypto = () => {
-    const [cryptoList, setCryptoList] = useState([]);
-
-    useEffect(() => { getCrypto().then(data => setCryptoList(data)) }, []);
-
+    
     return <Layout>
-        <CryptoList data={cryptoList} />
+        <CryptoList />
     </Layout>
 }
 

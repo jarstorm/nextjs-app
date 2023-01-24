@@ -1,7 +1,7 @@
 import { AppBar, Drawer, IconButton, Toolbar, Typography } from "@mui/material";
 import { Box } from "@mui/system";
-import AppMenu from "../components/AppMenu/AppMenu";
-import styles, { globalStyles } from "./styles"
+import AppMenu from "../components/appMenu/AppMenu";
+import { globalStyles } from "./styles"
 
 type Props = {
     title?: string,
