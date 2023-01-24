@@ -1,7 +1,8 @@
+import Layout from "../../layouts";
 
 export default function PokemonDetail (props) {
     console.log(props)
-    return <span>Pokemon detail {props.name}</span>
+    return <Layout><span>Pokemon detail {props.name}</span></Layout>
 }
 
 export async function getServerSideProps({params}) {

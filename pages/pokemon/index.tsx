@@ -9,10 +9,7 @@ const Pokemon = () => {
     useEffect(() => { getPokemon().then(data => setPokemonList(data)) }, []);
 
     return <Layout>
-        <>
-            <h1>Pokemon List</h1>
-            <PokemonList data={pokemonList} />
-        </>
+        <PokemonList data={pokemonList} />
     </Layout>
 }
 
