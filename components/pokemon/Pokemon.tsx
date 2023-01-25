@@ -3,22 +3,26 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import styles from "./styles"
 
-const Pokemon = (props: PokemonData) => {
-    const {data} = props;
+interface PokemonProps  {
+    data: PokemonData 
+}
+
+const Pokemon = (props: PokemonProps) => {
+    const { data }= props
     const { name, url } = data;
     const [pokemonData, setPokemonData] = useState<PokemonDetail>();
     useEffect(() => {
-        fetch(url).then(res => res.json()).then((data:PokemonDetail) => setPokemonData(data))
+        fetch(url).then(res => res.json()).then((data: PokemonDetail) => setPokemonData(data))
     }, [url])
 
     if (!pokemonData) {
-        return;
+        return null;
     }
-    
+
     const imageSrc = pokemonData.sprites?.back_default;
     const href = `/pokemon/${pokemonData.id}`;
     return (
-        <div  className="pokemonCard">
+        <div className="pokemonCard">
             <Card sx={{ minWidth: 275 }}>
                 <CardContent>
                     <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
@@ -35,7 +39,7 @@ const Pokemon = (props: PokemonData) => {
                         well meaning and kindly.
                         <br />
                         {'"a benevolent smile"'}
-                    </Typography>                    
+                    </Typography>
                 </CardContent>
                 <CardActions>
                     <Button size="small"><Link href={href}>Learn More</Link></Button>

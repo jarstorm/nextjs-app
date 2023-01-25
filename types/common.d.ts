@@ -1,14 +1,10 @@
 interface CryptoData {
-    data: {
-        symbol: string
-    }
+    symbol: string
 }
 
 interface PokemonData {
-    data: {
-        name: string
-        url: string
-    }
+    name: string
+    url: string
 }
 
 interface PokemonDetail {

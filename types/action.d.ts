@@ -4,5 +4,5 @@ export interface CryptoApiResponse {
 }
 
 export interface PokemonApiResponse {
-    
+    results: any[]
 }

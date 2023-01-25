@@ -5,8 +5,7 @@ import Layout from "../../layouts";
 type PageParams = {
     id: string
 }
-export default function PokemonDetail(props: PokemonData) {
-    console.log(props)
+export default function PokemonDetail(props: PokemonData) {    
     return <Layout>
         <Pokemon data={props} />
     </Layout>
@@ -14,7 +13,9 @@ export default function PokemonDetail(props: PokemonData) {
 
 export async function getServerSideProps({ params }: GetStaticPropsContext<PageParams>) {
     const id = params?.id || null;
-    if (id) {
+    console.log(params, id)
+    if (id && id !== "undefined") {
+        console.log("entro")
         const data = await fetch(`https://pokeapi.co/api/v2/pokemon/${id}`).then(res => res.json());
         return { props: data }
     }

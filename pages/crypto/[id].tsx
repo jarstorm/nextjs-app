@@ -6,7 +6,7 @@ type PageParams = {
 }
 
 export default function CryptoDetail(props: CryptoData) {
-    return <Layout><span>Crypto detail {props.name}</span></Layout>
+    return <Layout><span>Crypto detail {props.symbol}</span></Layout>
 }
 
 export async function getServerSideProps({ params }: GetStaticPropsContext<PageParams>) {
